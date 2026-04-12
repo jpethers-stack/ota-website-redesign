@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Old Town Academy — Redesign v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--p:#4B2E83;--pd:#2E1B57;--ps:#F3EEFB;--g:#F5B82E;--ink:#1A1326;--paper:#FAF8FF;--line:#E6DEF4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+img{display:block;max-width:100%}
+.serif{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.05}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+nav{position:sticky;top:0;background:rgba(250,248,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:50}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--p);text-decoration:none}
+.logo img{width:46px;height:46px;object-fit:contain}
+.logo small{display:block;font-size:11px;color:#6b5b8a;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:30px;font-size:14px;font-weight:500}
+.nav-links a{color:var(--ink);text-decoration:none}
+.nav-links a:hover{color:var(--p)}
+.btn{display:inline-block;padding:13px 24px;background:var(--p);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:14px;transition:all .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(75,46,131,.3)}
+.btn-ghost{background:transparent;color:var(--p);border:1.5px solid var(--p)}
+.btn-gold{background:var(--g);color:var(--pd)}
+.hero{padding:70px 0 90px;background:radial-gradient(ellipse at top right,var(--ps),transparent 65%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:#fff;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:600;color:var(--p);margin-bottom:22px}
+.eyebrow::before{content:"";width:8px;height:8px;background:var(--g);border-radius:50%}
+h1.serif{font-size:clamp(42px,5.5vw,72px)}
+h1 em{font-style:italic;color:var(--p);font-weight:400}
+.lede{font-size:18px;color:#5a4b76;margin:22px 0 32px;max-width:520px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.hero-collage{position:relative;height:560px}
+.hero-collage img{position:absolute;border-radius:18px;box-shadow:0 24px 60px -20px rgba(75,46,131,.4);object-fit:cover}
+.hc1{width:62%;height:62%;top:0;left:0;z-index:2}
+.hc2{width:48%;height:46%;bottom:0;right:0;border:6px solid #fff;z-index:3}
+.hc3{width:36%;height:36%;top:18%;right:0;z-index:1}
+.badge{position:absolute;bottom:14%;left:-14px;background:var(--p);color:#fff;padding:14px 20px;border-radius:14px;font-size:13px;font-weight:600;z-index:4;box-shadow:0 16px 40px -10px rgba(75,46,131,.5)}
+.badge b{font-family:'Fraunces',serif;font-size:26px;color:var(--g);display:block;line-height:1}
+.pillars{padding:100px 0;border-top:1px solid var(--line)}
+.section-head{text-align:center;max-width:680px;margin:0 auto 60px}
+.section-head h2{font-size:clamp(34px,4vw,52px);margin-bottom:14px}
+.section-head p{color:#6b5b8a;font-size:17px}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pillar{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:all .25s}
+.pillar:hover{transform:translateY(-6px);box-shadow:0 24px 50px -20px rgba(75,46,131,.25);border-color:var(--p)}
+.pillar-img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.pillar-body{padding:26px 28px 30px}
+.pillar-tag{font-size:11px;font-weight:700;color:var(--p);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.pillar h3{font-family:'Fraunces',serif;font-size:24px;font-weight:600;margin-bottom:8px}
+.pillar p{font-size:14px;color:#6b5b8a}
+.commit{padding:90px 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.commit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+.commit img{border-radius:24px;aspect-ratio:5/4;object-fit:cover;width:100%}
+.commit h2{font-size:clamp(32px,3.6vw,46px);margin-bottom:18px}
+.commit p{color:#5a4b76;font-size:17px;margin-bottom:24px}
+.news{padding:100px 0}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.news-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s}
+.news-card:hover{transform:translateY(-4px)}
+.news-card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.news-body{padding:22px 24px 26px}
+.news-date{font-size:12px;color:var(--p);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.news-card h4{font-family:'Fraunces',serif;font-size:19px;font-weight:600;line-height:1.25}
+.banner{margin:60px auto 100px;max-width:1180px;background:var(--p);border-radius:32px;padding:70px;color:#fff;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.banner::after{content:"";position:absolute;right:-100px;bottom:-100px;width:340px;height:340px;border:32px solid var(--g);border-radius:50%;opacity:.18}
+.banner h2{font-family:'Fraunces',serif;font-size:44px;line-height:1.05;margin-bottom:18px}
+.banner p{opacity:.88;margin-bottom:28px;font-size:16px}
+footer{padding:60px 0 50px;border-top:1px solid var(--line);text-align:center;color:#6b5b8a;font-size:13px}
+.note{background:#fff8e1;border-left:4px solid var(--g);padding:14px 20px;font-size:13px;color:#5a4b00;max-width:1184px;margin:24px auto;border-radius:8px}
+@media(max-width:900px){.hero-grid,.commit-grid,.banner,.pillar-grid,.news-grid{grid-template-columns:1fr}.nav-links{display:none}.hero-collage{height:420px}}
+</style></head><body>
+<div class="note"><b>Redesign concept v2</b> — now with real OTA photography pulled from oldtownacademy.org. Royal Purple system, Fraunces + Inter typography, photo-driven layout.</div>
+<nav><div class="wrap">
+<a class="logo" href="#"><img src="https://www.oldtownacademy.org/pics/school_logo.png" alt="OTA"><div>Old Town Academy<small>K–8 Charter • San Diego</small></div></a>
+<div class="nav-links"><a href="#">About</a><a href="#">Academics</a><a href="#">STEM &amp; Robotics</a><a href="#">Admissions</a><a href="#">Community</a><a href="#">News</a></div>
+<a class="btn" href="#">Apply for 2026–27</a>
+</div></nav>
+
+<section class="hero"><div class="wrap"><div class="hero-grid">
+<div>
+<div class="eyebrow">Now enrolling • Grades K–8</div>
+<h1 class="serif">A rigorous, joyful education <em>in the heart of Old Town.</em></h1>
+<p class="lede">Core Knowledge curriculum, project-based STEM, robotics, instrumental music, and a 15:1 ratio. We prepare curious kids to become thoughtful, capable leaders.</p>
+<div class="cta-row"><a class="btn" href="#">Schedule a Tour</a><a class="btn btn-ghost" href="#">Explore Our Curriculum</a></div>
+</div>
+<div class="hero-collage">
+<img class="hc1" src="https://3.files.edl.io/833d/24/06/14/222946-031f5628-9550-40de-980a-7fc59367e28b.jpg" alt="Students with robots">
+<img class="hc2" src="https://3.files.edl.io/a8eb/24/06/14/222810-1cfef28d-9c55-460c-9539-4b9cb842f892.jpg" alt="Music">
+<img class="hc3" src="https://3.files.edl.io/0d17/24/06/14/222610-b00316cb-29cb-489f-8c53-0f7fe793c9d5.JPG" alt="Presentation">
+<div class="badge"><b>15:1</b>Student/Teacher Ratio</div>
+</div>
+</div></div></section>
+
+<section class="pillars"><div class="wrap">
+<div class="section-head"><h2 class="serif">Six pillars, one foundation.</h2><p>Every OTA student experiences the full breadth of our program from kindergarten through eighth grade.</p></div>
+<div class="pillar-grid">
+<div class="pillar"><img class="pillar-img" src="https://3.files.edl.io/0d17/24/06/14/222610-b00316cb-29cb-489f-8c53-0f7fe793c9d5.JPG" alt=""><div class="pillar-body"><div class="pillar-tag">Curriculum</div><h3>Core Knowledge</h3><p>A coherent, content-rich K–8 sequence that builds vocabulary, background knowledge, and critical thinking year over year.</p></div></div>
+<div class="pillar"><img class="pillar-img" src="https://3.files.edl.io/e63c/24/06/14/222915-a76ab8dd-53c6-4da8-b5e6-0e6ba58e3e02.jpg" alt=""><div class="pillar-body"><div class="pillar-tag">Hands-On</div><h3>STEM &amp; PBL</h3><p>Project-based science grounded in real San Diego ecosystems and authentic engineering challenges.</p></div></div>
+<div class="pillar"><img class="pillar-img" src="https://3.files.edl.io/833d/24/06/14/222946-031f5628-9550-40de-980a-7fc59367e28b.jpg" alt=""><div class="pillar-body"><div class="pillar-tag">Innovation</div><h3>Robotics</h3><p>Our Osprey Robotics program introduces design thinking, coding, and competition starting in middle school.</p></div></div>
+<div class="pillar"><img class="pillar-img" src="https://3.files.edl.io/a8eb/24/06/14/222810-1cfef28d-9c55-460c-9539-4b9cb842f892.jpg" alt=""><div class="pillar-body"><div class="pillar-tag">Creative</div><h3>Instrumental Music</h3><p>Every student participates in music, building confidence, discipline, and creative expression.</p></div></div>
+<div class="pillar"><img class="pillar-img" src="https://3.files.edl.io/07af/24/06/14/222716-93bb8135-cbda-4ae3-af13-bb8973c174c4.jpg" alt=""><div class="pillar-body"><div class="pillar-tag">Character</div><h3>Core Virtues</h3><p>Daily focus on integrity, respect, and responsibility from teachers who know every student by name.</p></div></div>
+<div class="pillar"><img class="pillar-img" src="https://3.files.edl.io/b62c/24/06/14/220559-a5541ec8-0b3b-4739-bb96-2e465d88ba0b.jpg" alt=""><div class="pillar-body"><div class="pillar-tag">Together</div><h3>Community</h3><p>A tight-knit family where parents, teachers, and students build something bigger together.</p></div></div>
+</div>
+</div></section>
+
+<section class="commit"><div class="wrap"><div class="commit-grid">
+<img src="https://3.files.edl.io/b62c/24/06/14/220559-a5541ec8-0b3b-4739-bb96-2e465d88ba0b.jpg" alt="Students collaborating">
+<div>
+<div class="eyebrow">Our Commitment</div>
+<h2 class="serif">Small school warmth. Big school ambition.</h2>
+<p>We commit to high expectations, a balanced and hands-on curriculum, clear goals, and progress measurement. Our students benefit from small-group learning, real-time feedback, and technology-enhanced lessons inside a safe, inclusive environment.</p>
+<a class="btn" href="#">Read Our Charter →</a>
+</div>
+</div></div></section>
+
+<section class="news"><div class="wrap">
+<div class="section-head"><h2 class="serif">Latest from campus.</h2><p>News, events, and celebrations from the OTA community.</p></div>
+<div class="news-grid">
+<div class="news-card"><img src="https://3.files.edl.io/bed1/26/03/28/163630-15f4155c-6eaf-48b9-8b0e-75951928b9ca.jpeg" alt=""><div class="news-body"><div class="news-date">Apr 26, 2026</div><h4>15th Annual Gala: Celebrating Excellence &amp; Community Impact</h4></div></div>
+<div class="news-card"><img src="https://3.files.edl.io/e1a3/26/03/30/160228-2afe9e49-df7b-467e-991b-98a8352f7f5e.jpeg" alt=""><div class="news-body"><div class="news-date">Mar 27, 2026</div><h4>OTA Featured at Barnes &amp; Noble Community Movie Day</h4></div></div>
+<div class="news-card"><img src="https://3.files.edl.io/4abd/26/03/20/180559-9d20a261-78e1-4d74-a4fb-304d6728601e.jpg" alt=""><div class="news-body"><div class="news-date">Mar 20, 2026</div><h4>OTA Recognized as a Purple Star School</h4></div></div>
+</div>
+</div></section>
+
+<section><div class="banner">
+<div><h2>Visit campus. Meet our teachers. See OTA in action.</h2><p>Tours run weekly throughout the school year. The best way to understand what makes us different is to walk our halls and talk with our students.</p><a class="btn btn-gold" href="#">Book a Campus Tour →</a></div>
+<div></div>
+</div></section>
+
+<footer><div class="wrap">2120 San Diego Ave • San Diego, CA 92110 • (619) 574-6225 • info@oldtownacademy.org<br><br>© Old Town Academy K–8 Charter School. Redesign concept by James, STEM Department.</div></footer>
+</body></html>
